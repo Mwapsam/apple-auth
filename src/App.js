@@ -41,7 +41,7 @@ function App() {
           <button onClick={renderProps.onClick}>Custom Apple Login Button</button>
         )}
         callback={(res) => {
-          console.log(res);
+          console.log(res.code);
           if (res.code) {
             handleAppleLogin(res.code);
           }
