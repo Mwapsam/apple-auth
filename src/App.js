@@ -1,19 +1,6 @@
 import React from 'react';
 import AppleLogin from 'react-apple-login';
 import axios from 'axios';
-import gql from 'graphql-tag';
-
-const APPLE_LOGIN_MUTATION = gql`
-  mutation AppleLogin($authorization_code: String!) {
-    appleAuth(authorizationCode: $authorization_code) {
-      user {
-        id
-        username
-        # ...
-      }
-    }
-  }
-`;
 
 function App() {
   const handleAppleLogin = async (authorizationCode) => {
