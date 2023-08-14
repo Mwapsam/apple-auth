@@ -42,8 +42,8 @@ function App() {
         )}
         callback={(res) => {
           console.log(res);
-          if (res.authorization) {
-            handleAppleLogin(res.authorization.code);
+          if (res.code) {
+            handleAppleLogin(res.code);
           }
         }}
       />
