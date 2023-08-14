@@ -42,9 +42,6 @@ function App() {
         clientId="staging.smartsaverzambia.com.sid" 
         scope="name email" 
         redirectURI="https://apple-auth.vercel.app/"
-        render={(renderProps) => (
-          <button onClick={renderProps.onClick}>Custom Apple Login Button</button>
-        )}
         callback={(res) => {
           console.log(res.code);
           if (res.code) {
