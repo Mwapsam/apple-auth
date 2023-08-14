@@ -42,7 +42,6 @@ function App() {
         clientId="staging.smartsaverzambia.com.sid" 
         scope="name email" 
         autoLoad={true}
-        responseType="code id_token"
         designProp={{
           height: 50,
           width: 160,
