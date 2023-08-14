@@ -21,7 +21,15 @@ function App() {
       const response = await axios.post(
         'http://localhost:8000/graphql/',
         {
-          query: APPLE_LOGIN_MUTATION,
+          query: `mutation AppleLogin($authorization_code: String!) {
+            appleAuth(authorizationCode: $authorization_code) {
+              user {
+                id
+                username
+                # ...
+              }
+            }
+          }`,
           variables: {
             authorization_code: authorizationCode,
           },
