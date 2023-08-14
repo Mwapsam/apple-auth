@@ -43,7 +43,6 @@ function App() {
         scope="name email" 
         autoLoad={true}
         responseType="code id_token"
-        responseMode="query"
         designProp={{
           height: 50,
           width: 160,
