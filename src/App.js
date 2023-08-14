@@ -22,7 +22,7 @@ function App() {
         'http://localhost:8000/graphql/',
         {
           query: `mutation AppleLogin($authorization_code: String!) {
-            appleAuth(authorizationCode: $authorization_code) {
+            appleAuth(code: $authorization_code) {
               user {
                 id
                 username
