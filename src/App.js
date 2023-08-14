@@ -53,6 +53,7 @@ function App() {
     <div>
       <AppleLogin 
         clientId="staging.smartsaverzambia.com.sid" 
+        scope="name email" 
         redirectURI="https://apple-auth.vercel.app/"
         render={(renderProps) => (
           <button onClick={renderProps.onClick}>Custom Apple Login Button</button>
