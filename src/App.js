@@ -1,23 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import AppleLogin from 'react-apple-login';
+import axios from 'axios';
+import gql from 'graphql-tag';
+
+const APPLE_LOGIN_MUTATION = gql`
+  mutation AppleLogin($authorization_code: String!) {
+    appleAuth(authorizationCode: $authorization_code) {
+      user {
+        id
+        username
+        # ...
+      }
+    }
+  }
+`;
 
 function App() {
+  const handleAppleLogin = async (authorizationCode) => {
+    try {
+      const response = await axios.post('http://localhost:8000/graphql/', {
+        query: APPLE_LOGIN_MUTATION,
+        variables: {
+          authorization_code: authorizationCode,
+        },
+      });
+
+      const user = response.data.data.appleLogin.user;
+      console.log('Logged in user:', user);
+    } catch (err) {
+      console.error('Error logging in:', err);
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <AppleLogin 
+        clientId="staging.smartsaverzambia.com.sid" 
+        redirectURI="https://www.smartsaverzambia.com/sign-in/"
+        render={(renderProps) => (
+          <button onClick={renderProps.onClick}>Custom Apple Login Button</button>
+        )}
+        callback={(res) => {
+          console.log(res);
+          if (res.authorization) {
+            handleAppleLogin(res.authorization.code);
+          }
+        }}
+      />
     </div>
   );
 }
