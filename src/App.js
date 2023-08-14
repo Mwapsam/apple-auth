@@ -18,19 +18,28 @@ const APPLE_LOGIN_MUTATION = gql`
 function App() {
   const handleAppleLogin = async (authorizationCode) => {
     try {
-      const response = await axios.post('http://localhost:8000/graphql/', {
-        query: APPLE_LOGIN_MUTATION,
-        variables: {
-          authorization_code: authorizationCode,
+      const response = await axios.post(
+        'http://localhost:8000/graphql/',
+        {
+          query: APPLE_LOGIN_MUTATION,
+          variables: {
+            authorization_code: authorizationCode,
+          },
         },
-      });
-
-      const user = response.data.data.appleLogin.user;
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+  
+      const user = response.data.data.appleAuth.user;
       console.log('Logged in user:', user);
     } catch (err) {
       console.error('Error logging in:', err);
     }
   };
+  
 
   return (
     <div>
