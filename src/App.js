@@ -41,7 +41,6 @@ function App() {
       <AppleLogin 
         clientId="staging.smartsaverzambia.com.sid" 
         scope="name email" 
-        autoLoad={true}
         designProp={{
           height: 50,
           width: 160,
