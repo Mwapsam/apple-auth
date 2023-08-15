@@ -43,7 +43,7 @@ function App() {
         scope="name email" 
         redirectURI="https://apple-auth.vercel.app/"
         callback={(res) => {
-          console.log(res.code);
+          console.log(res);
           if (res.code) {
             handleAppleLogin(res.code);
           }
