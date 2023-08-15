@@ -41,16 +41,6 @@ function App() {
       <AppleLogin 
         clientId="staging.smartsaverzambia.com.sid" 
         scope="name email" 
-        designProp={{
-          height: 50,
-          width: 160,
-          color: "black",
-          border: true,
-          type: "sign-in",
-          border_radius: 10,
-          scale: 1.5,
-          locale: "en_US"
-        }}
         redirectURI="https://apple-auth.vercel.app/"
         callback={(res) => {
           console.log(res.code);
