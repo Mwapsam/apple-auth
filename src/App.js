@@ -38,7 +38,7 @@ function App() {
   return (
     <div>
       <AppleLogin 
-        clientId="com.smartechfzllc.app.theSmartSaver" 
+        clientId="staging.smartsaverzambia.com.sid" 
         scope="name email" 
         redirectURI="https://apple-auth.vercel.app/"
         callback={(res) => {
