@@ -8,13 +8,15 @@ function App() {
       const response = await axios.post(
         'http://localhost:8000/graphql/',
         {
-          query: `mutation AppleAuthMutation($authorization_code: String!) {
-            appleAuth(accessToken: $authorization_code) {
-              email
-              uid
-              accessToken
+          query: `
+            mutation AppleAuthMutation($authorization_code: String!) {
+              appleAuth(access_token: $authorization_code) {
+                email
+                uid
+                access_token
+              }
             }
-          }`,
+          `,
           variables: {
             authorization_code: authorizationCode,
           },
@@ -25,14 +27,13 @@ function App() {
           },
         }
       );
-  
-      const user = response.data.data.appleAuth.user;
+
+      const user = response.data.data.appleAuth;
       console.log('Logged in user:', user);
     } catch (err) {
       console.error('Error logging in:', err);
     }
   };
-  
 
   return (
     <div>
