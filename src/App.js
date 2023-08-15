@@ -10,10 +10,10 @@ function App() {
         {
           query: `
             mutation AppleAuthMutation($authorization_code: String!) {
-              appleAuth(access_token: $authorization_code) {
+              appleAuth(accessToken: $authorization_code) {
                 email
                 uid
-                access_token
+                accessToken
               }
             }
           `,
