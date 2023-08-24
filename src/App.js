@@ -6,7 +6,7 @@ function App() {
   const handleAppleLogin = async (authorizationCode) => {
     try {
       const response = await axios.post(
-        'https://staging.smartsaverzambia.com/graphql/',
+        'http://localhost:8000/graphql/',
         {
           query: `
             mutation AppleLogin(
