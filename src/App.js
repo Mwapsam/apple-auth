@@ -1,5 +1,7 @@
 import React from 'react';
 import AppleLogin from 'react-apple-login';
+import AppleSignin from 'react-apple-signin-auth';
+
 import axios from 'axios';
 
 function App() {
@@ -45,7 +47,7 @@ function App() {
 
   return (
     <div>
-      <AppleLogin 
+      {/* <AppleLogin 
         clientId="staging.smartsaverzambia.com.sid" 
         scope="name email email_verified is_private_email real_user_status transfer_sub" 
         responseType= 'code'
@@ -57,6 +59,21 @@ function App() {
             handleAppleLogin(res.code);
           }
         }}
+      /> */}
+      <AppleSignin 
+            authOptions={{
+              clientId: 'staging.smartsaverzambia.com.sid',
+              scope: 'email name',
+              redirectURI: 'https://apple-auth.vercel.app/',
+              state: 'state',
+              nonce: 'nonce',
+            }} 
+
+            onSuccess={(response) => {
+              console.log(response)
+              handleAppleLogin(response);
+            }}
+            onError={(error) => console.error(error)}
       />
     </div>
   );
