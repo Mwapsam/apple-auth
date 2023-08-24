@@ -47,7 +47,9 @@ function App() {
     <div>
       <AppleLogin 
         clientId="staging.smartsaverzambia.com.sid" 
-        scope="name email" 
+        scope="name email email_verified is_private_email real_user_status transfer_sub" 
+        responseType= 'code'
+        responseMode= 'query'
         redirectURI="https://apple-auth.vercel.app/"
         callback={(res) => {
           console.log(res);
