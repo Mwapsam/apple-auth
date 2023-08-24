@@ -9,11 +9,19 @@ function App() {
         'http://localhost:8000/graphql/',
         {
           query: `
-            mutation AppleAuthMutation($authorization_code: String!) {
-              appleAuth(accessToken: $authorization_code) {
-                email
-                uid
-                accessToken
+            mutation AppleLogin(
+              $authorization_code: String!
+              $device_id: String
+            ) {
+              appleAuth(
+                code: $authorization_code,
+                deviceId: $device_id
+              ) {
+                user {
+                  id
+                  username
+                  email
+                }
               }
             }
           `,
