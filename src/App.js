@@ -6,7 +6,7 @@ function App() {
   const handleAppleLogin = async (authorizationCode) => {
     try {
       const response = await axios.post(
-        'http://localhost:8000/graphql/',
+        'https://staging.smartsaverzambia.com/graphql/',
         {
           query: `
             mutation AppleLogin(
@@ -48,7 +48,7 @@ function App() {
       <AppleLogin 
         clientId="staging.smartsaverzambia.com.sid" 
         scope="name email" 
-        redirectURI="https://apple-auth.vercel.app/"
+        redirectURI="https://apple-auth.vercel.app"
         callback={(res) => {
           console.log('response: ', res);
           if (res.code) {
