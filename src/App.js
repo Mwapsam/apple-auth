@@ -40,7 +40,7 @@ function App() {
         }
       );
 
-      const user = response.data.data.appleAuth;
+      const user = response.data;
       console.log('Logged in user:', user);
     } catch (err) {
       console.error('Error logging in:', err);
