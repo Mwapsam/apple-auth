@@ -51,7 +51,7 @@ function App() {
     <div>
       <AppleLogin 
         clientId="staging.smartsaverzambia.com.sid" 
-        scope = "email id_token_claims" 
+        scope = "email" 
         redirectURI="https://apple-auth.vercel.app"
         callback={(res) => {
           console.log('response: ', res);
