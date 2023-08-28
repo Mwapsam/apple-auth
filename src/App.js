@@ -47,11 +47,13 @@ function App() {
     }
   };
 
+
   return (
     <div>
       <AppleLogin 
         clientId="staging.smartsaverzambia.com.sid" 
-        scope = "email profile"
+        scope="email name"
+        responseMode="query"
         nonce='random-nonce'
         redirectURI="https://apple-auth.vercel.app"
         callback={(res) => {
